@@ -25,12 +25,20 @@ yarn
 
 ```bash
 npm run start
-# ou
-npm start
 # ou avec yarn
 yarn start
 ```
 
-# Crédits
+## Utilisation
+
+### Recherche
+
+Pour rechercher, entrer le nom du vaisseau désiré et cliquer sur la loupe (🔍) ou appuyer sur la touche `Entrée`
+
+### Informations sur un vaisseau
+
+Pour obtenir davantage d'informations sur un vaisseau, appuyer sur le bouton `Plus d'informations`. Une fenêtre `Modal` apparaîtra et affichera des informations plus précises.
+
+## Crédits
 
 Projet réalisé avec l'aide de la librairie antd (https://ant.design)

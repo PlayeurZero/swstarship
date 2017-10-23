@@ -16,9 +16,9 @@ class Results extends Component {
 			let total = results.count
 
 			if (results.next) {
-				current = Number.parseInt(url.parse(results.next, true).query.page) - 1
+				current = Number.parseInt(url.parse(results.next, true).query.page, 10) - 1
 			} else if (results.previous) {
-				current = Number.parseInt(url.parse(results.previous, true).query.page) + 1
+				current = Number.parseInt(url.parse(results.previous, true).query.page, 10) + 1
 			}
 
 			return (
