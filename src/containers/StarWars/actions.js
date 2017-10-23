@@ -2,17 +2,23 @@ import axios from 'axios'
 
 import * as constants from './constants'
 
-export function setSearch(search) {
+export function setSearch(search, page = 1) {
 	return dispatch => {
+		const base_url = 'https://swapi.co/api/starships/'
+
+		if(!search) search = ''
+
 		dispatch({
 			type: constants.SET_SEARCH,
 			payload: search
 		})
 
-		if(!search) search = ''
-
 		if(search.length === 0) {
-			axios.get('https://swapi.co/api/starships/')
+			dispatch({
+				type: constants.FETCH_STARSHIPS
+			})
+
+			axios.get(`${base_url}?page=${page}`)
 				.then(response => {
 					dispatch({
 						type: constants.FETCH_SHARSHIPS_FULFILLED,
@@ -31,9 +37,7 @@ export function setSearch(search) {
 				type: constants.FETCH_STARSHIPS
 			})
 
-			console.log(`https://swapi.co/api/starships/?name=${search}`)
-
-			axios.get(`https://swapi.co/api/starships/?name=${search}`)
+			axios.get(`${base_url}?search=${search}&page=${page}`)
 				.then(response => {
 					dispatch({
 						type: constants.FETCH_SHARSHIPS_FULFILLED,

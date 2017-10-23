@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Spin } from 'antd'
+import { Spin, Tag } from 'antd'
 
 import axios from 'axios'
 
@@ -18,7 +18,7 @@ class Films extends Component {
 		let { films } = this.props
 
 		if(!this.state.fetched) {
-			films.map(film => {
+			films.forEach(film => {
 				axios.get(film)
 					.then(response => {
 						this.setState({
@@ -39,16 +39,14 @@ class Films extends Component {
 		if(this.state.fetched && this.state.films.length > 0) {
 			return (
 				<span>
-					Liste des films: <br />
-					<ul>
+					Présent dans { this.state.films.length } film{ this.state.films.length > 1 ? 's' : '' }: <br />
 						{
 							this.state.films.map((film, index) => {
 								return (
-									<li key={index}>- { film }</li>
+									<Tag key={index}>{ film }</Tag>
 								)
 							})
 						}
-					</ul>
 				</span>
 			)
 		}

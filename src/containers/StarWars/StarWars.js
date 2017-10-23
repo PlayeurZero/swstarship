@@ -13,6 +13,7 @@ class StarWars extends Component {
 		super()
 
 		this.handleSearch = this.handleSearch.bind(this)
+		this.handlePaginationChange = this.handlePaginationChange.bind(this)
 	}
 
 	componentWillMount() {
@@ -27,6 +28,12 @@ class StarWars extends Component {
 		starwarsActions.setSearch(value)
 	}
 
+	handlePaginationChange(page) {
+		let { search, starwarsActions } = this.props
+
+		starwarsActions.setSearch(search, page)
+	}
+
 	render() {
 		let { results, fetching } = this.props
 
@@ -34,7 +41,7 @@ class StarWars extends Component {
 			<div>
 				 <SearchBar handleSearch={this.handleSearch} />
 
-				 <Results results={results} fetching={fetching} />
+				 <Results results={results} fetching={fetching} handlePaginationChange={this.handlePaginationChange} />
 			</div>
 		)
 	}

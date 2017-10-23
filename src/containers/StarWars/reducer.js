@@ -1,20 +1,21 @@
 import * as constants from './constants'
 
 const initialState = {
-	search: '',
 	fetching: false,
-	results: {}
+	results: {},
+	page: 1,
+	search: ''
 }
 
 export default (state = initialState, action) => {
 	switch(action.type) {
 		case constants.SET_SEARCH: {
 			return {
-				...state, 
+				...state,
 				search: action.payload
 			}
 		}
-
+		
 		case constants.FETCH_STARSHIPS: {
 			return {
 				...state,
